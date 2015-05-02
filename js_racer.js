@@ -1,43 +1,40 @@
-"use strict";
-
-var inProgress = true;
-
 window.onload = function() {
-  addKeyUp();
+  game.keyListener()
 }
 
-var addKeyUp = function(){
+var Racer = function(){};
+var game = new Racer();
+
+Racer.inProgress = true;
+
+Racer.prototype.keyListener = function(){
   document.addEventListener('keyup', function(event){
-    whichPlayer(event)
+    game.whichPlayer(event)
   })
 }
 
-var whichPlayer = function(event){
+Racer.prototype.whichPlayer = function(event){
+
   if (event.keyCode === 113 || event.keyCode === 81) {
-    movePlayerOne();
+    var player = document.getElementById("player-1");
+    game.movePlayer(player);
   }
   else if (event.keyCode === 112 || event.keyCode === 80) {
-    movePlayerTwo();
+    var player = document.getElementById("player-2");
+    game.movePlayer(player);
   }
 }
 
-var movePlayerOne = function(){
-  var player = document.getElementById("player-1");
-  checkWinner(player);
-  player.nextElementSibling.id = "player-1";
+Racer.prototype.movePlayer = function(player){
+  game.checkWinner(player);
+  player.nextElementSibling.id = player.id;
   player.id = "";
 }
 
-var movePlayerTwo = function(){
-  var player = document.getElementById("player-2");
-  checkWinner(player);
-  player.nextElementSibling.id = "player-2";
-  player.id = "";
-}
-
-var checkWinner = function(player){
-  if (player.nextElementSibling == null && inProgress == true ){
-    inProgress = false
+Racer.prototype.checkWinner = function(player){
+  if (player.nextElementSibling == null && Racer.inProgress == true ){
+    Racer.inProgress = false
     alert( player.id.charAt(0).toUpperCase() + player.id.slice(1) + ' Wins!')
   }
 }
+
