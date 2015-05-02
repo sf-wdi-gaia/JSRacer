@@ -1,0 +1,27 @@
+body {
+  background-color: black;
+}
+
+table {
+  margin: 1em;
+}
+
+td {
+  border: 1px solid black;
+  width: 1em;
+  height: 1em;
+  margin: 1em;
+}
+
+#player-1 {
+  background-color: blue;
+}
+
+#player-2 {
+  background-color: red;
+}
+
+.finish {
+  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJUlEQVQYV2NkYGD4z4AJGNGFQAJDQSEWv2C6G8N3UF0YHhxAhQBLjgoGdiBmhAAAAABJRU5ErkJggg==) repeat;
+  background-color: white;
+}
