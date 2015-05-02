@@ -8,14 +8,17 @@ window.onload = function() {
 
 var addKeyUp = function(){
   document.addEventListener('keyup', function(event){
-    if (event.keyCode === 113 || event.keyCode === 81) {
-      movePlayerOne();
-    }
-
-    else if (event.keyCode === 112 || event.keyCode === 80) {
-      movePlayerTwo();
-    }
+    whichPlayer(event)
   })
+}
+
+var whichPlayer = function(event){
+  if (event.keyCode === 113 || event.keyCode === 81) {
+    movePlayerOne();
+  }
+  else if (event.keyCode === 112 || event.keyCode === 80) {
+    movePlayerTwo();
+  }
 }
 
 var movePlayerOne = function(){
@@ -35,7 +38,6 @@ var movePlayerTwo = function(){
 var checkWinner = function(player){
   if (player.nextElementSibling == null && inProgress == true ){
     inProgress = false
-    // debugger
     alert( player.id.charAt(0).toUpperCase() + player.id.slice(1) + ' Wins!')
   }
 }
